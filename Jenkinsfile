@@ -68,7 +68,7 @@ pipeline {
                             sh 'cat demo-file0.txt'
                             sh 'cat demo-file1.txt'
                             sh 'cat demo-file2.txt'
-                            sh "echo FROM node:13-alpine >> Dockerfile"
+                            sh "echo FROM node:13-alpine > Dockerfile"
                             sh "echo RUN apk add --update nano > Dockerfile"
 
                             displayCurrentDir();
@@ -117,14 +117,14 @@ pipeline {
                                 dir(module.name) {
                                     displayCurrentDir();
                                     echo "Name: ${module.name} Root: ${module.root} Port: ${module.port} Visibility: ${module.visibility}"
-                                    sh "echo This comes from ${module.name} Stage3 >> ${module.name}_demo-file0.txt"
+                                    sh "echo This comes from ${module.name} Stage3 > ${module.name}_demo-file0.txt"
 
                                     docker.image("node:13-alpine").inside("-u root:root") {
                                         displayCurrentDir();
                                         commonNodeFunction();
 
                                         sh "cat ${module.name}_demo-file0.txt"
-            							sh "echo This comes from ${module.name} docker output 1 >> ${module.name}_demo-file1.txt"
+            							sh "echo This comes from ${module.name} docker output 1 > ${module.name}_demo-file1.txt"
             						}
 
             						docker.image("node:12-alpine").inside("-u root:root") {
@@ -133,7 +133,7 @@ pipeline {
 
                                         sh "cat ${module.name}_demo-file0.txt"
             							sh "cat ${module.name}_demo-file1.txt"
-            							sh "echo This comes from ${module.name} docker output 2 >> ${module.name}_demo-file2.txt"
+            							sh "echo This comes from ${module.name} docker output 2 > ${module.name}_demo-file2.txt"
             						}
 
                                     docker.image("python:3-alpine").inside("-u root:root") {
@@ -142,7 +142,7 @@ pipeline {
                                         sh "cat ${module.name}_demo-file0.txt"
             							sh "cat ${module.name}_demo-file1.txt"
                                         sh "cat ${module.name}_demo-file2.txt"
-            							sh "echo This comes from ${module.name} docker output 3 >> ${module.name}_demo-file3.txt"
+            							sh "echo This comes from ${module.name} docker output 3 > ${module.name}_demo-file3.txt"
             						}
 
                                     displayCurrentDir();
