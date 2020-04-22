@@ -39,7 +39,7 @@ pipeline {
         registry="jenkins-demo"
     }
 
-    agent none
+    agent any
 
     stages {
         stage('Stage1') {
