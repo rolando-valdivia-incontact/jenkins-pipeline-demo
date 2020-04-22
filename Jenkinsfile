@@ -69,7 +69,7 @@ pipeline {
                             sh 'cat demo-file1.txt'
                             sh 'cat demo-file2.txt'
                             sh "echo FROM node:13-alpine > Dockerfile"
-                            sh "echo RUN apk add --update nano > Dockerfile"
+                            sh "echo RUN apk add --update nano >> Dockerfile"
 
                             displayCurrentDir();
 
