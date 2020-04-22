@@ -1,0 +1,14 @@
+{
+  "name": "module1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"This is from module 1\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "log4js": "^6.2.1"
+  }
+}
