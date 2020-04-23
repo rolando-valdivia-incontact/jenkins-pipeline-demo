@@ -46,7 +46,6 @@ pipeline {
             steps {
                 script {
                     node {
-                            checkout scm
                         //ws {
                             displayCurrentDir();
                             sh "echo This comes from Stage1 ROOT > demo-file0.txt"
@@ -106,6 +105,7 @@ pipeline {
             steps {
                 script {
                     node {
+                        checkout scm
                         def builders = [:]
                         for (x in modules) {
                             def module = x // Need to bind the label variable before the closure - can't do 'for (label in labels)'
